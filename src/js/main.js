@@ -2,7 +2,9 @@
 // We don't have to do this, but it aids understanding of what we're doing,
 // and makes it easier to experiment from the browser.
 window.bus = require('./bus');
-var $ = require('jQuery');
+window.$ = require('jquery'); // binding to window for Backbone :/
+var Router = require('./router');
+new Router().start();
 
 $.get('http://qa2.theblacktux.com:8000/api/1/establishments/', {}, function (response) {
   bus.trigger('ESTABLISHMENTS_READY', response.results);
