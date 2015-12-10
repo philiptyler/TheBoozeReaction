@@ -4,21 +4,27 @@
 window.bus = require('./bus');
 var $ = require('jQuery');
 
-$.get('http://qa2.theblacktux.com:8000/api/1/establishments/', {}, function (response) {
-  bus.trigger('ESTABLISHMENTS_READY', response.results);
-});
+function loadAllJSON () {
+  var establishmentPromise = $.get('http://qa2.theblacktux.com:8000/api/1/establishments/', {}, function (response) {
+    bus.trigger('ESTABLISHMENTS_READY', response.results);
+  });
 
-$.get('http://qa2.theblacktux.com:8000/api/1/libations/', {}, function (response) {
-  bus.trigger('LIBATIONS_READY', response.results);
-});
+  var libationPromise = $.get('http://qa2.theblacktux.com:8000/api/1/libations/', {}, function (response) {
+    bus.trigger('LIBATIONS_READY', response.results);
+  });
 
-$.get('http://qa2.theblacktux.com:8000/api/1/establishment_libations/', {}, function (response) {
-  bus.trigger('ESTABLISHMENT_LIBATIONS_READY', response.results);
-});
+  var establishmentLibationPromise = $.get('http://qa2.theblacktux.com:8000/api/1/establishment_libations/', {}, function (response) {
+    bus.trigger('ESTABLISHMENT_LIBATIONS_READY', response.results);
+  });
 
-$.get('http://qa2.theblacktux.com:8000/api/1/ratings/', {}, function (response) {
-  bus.trigger('RATINGS_READY', response.results);
-});
+  var ratingPromise = $.get('http://qa2.theblacktux.com:8000/api/1/ratings/', {}, function (response) {
+    bus.trigger('RATINGS_READY', response.results);
+  });
+
+  $.when(establishmentPromise, libationPromise, establishmentLibationPromise, ratingPromise).done(function () {
+    bus.trigger('ALL_READY');
+  });
+}
 
 
 

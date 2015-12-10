@@ -44,6 +44,12 @@
    payload: Backbone collection of establishment backbone models
    implemented: dev
 
+   name: ALL_READY
+   description: All json for all 4 models has been loaded.  only triggered at the end
+    of a 'loadAllJSON' call in main.js
+   payload: N/A
+   implemented: dev
+
 */
 
 var Backbone = require('backbone');
