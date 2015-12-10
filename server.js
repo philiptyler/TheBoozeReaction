@@ -12,6 +12,7 @@ var singlePageHandler = function(req, res){
 app.get('/establishments',  singlePageHandler);
 app.get('/establishments*', singlePageHandler);
     
-app.listen(8585, function(){
-    console.log('development server running on localhost:8585');
+var port = process.argv[2] || 8585;
+app.listen(port, function(){
+    console.log('development server running on localhost:'+port);
 });
