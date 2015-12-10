@@ -18,3 +18,6 @@ browserify $SRC/js/main.js > $DIR/build/script.js
 # straight-up copy the html file
 cp $SRC/index.html $DIR/build/index.html 
 
+# copy the css (for now)
+cp $SRC/css/application.css $DIR/build/style.css
+
