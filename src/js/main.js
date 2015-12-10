@@ -3,12 +3,13 @@
 // and makes it easier to experiment from the browser.
 window.bus = require('./bus');
 window.$ = require('jQuery'); // binding to window for Backbone :/
-var Router = require('./router');
 var store = require('./store');
 
-// bind views to dom elements
-var EstablishmentsView = require('./views/establishments.jsx');
+// attach all our top-level views:
+var views = require('./views').start();
 
+// start the router
+var Router = require('./router');
 new Router().start();
 
 loadAllJSON();
