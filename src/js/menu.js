@@ -1,9 +1,9 @@
 var Backbone = require('backbone');
-var Establishment = require('./menuItem');
+var MenuItem = require('./menuItem');
 
 var Menu  = Backbone.Collection.extend({
 
-  model: menuItem
+  model: MenuItem
 
 });
 

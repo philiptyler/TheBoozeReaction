@@ -3,26 +3,20 @@ var LibationCol = require('./libationCol');
 
 var store = {};
 var loadCounter = 0;
-var num
 
 /* builds establishment Backbone collection from json from API */
-store.establishments = new EstablishmentCol();
 window.bus.on('ESTABLISHMENTS_READY', function (jsonPayload) {
-  establishments.reset(jsonPayload));
-
+  store.establishments = new EstablishmentCol(jsonPayload);
 });
 
 /* builds establishment Backbone collection from json from API */
-store.libations = new LibationCol();
 window.bus.on('LIBATIONS_READY', function (jsonPayload) {
-  libations.reset(jsonPayload));
+  store.libations = new LibationCol(jsonPayload);
+});
+
+window.bus.on('ALL_READY', function () {
+  console.log(store);
 });
 
 module.exports = store;
-
-// PRIVATE FUNCTIONS
-function tryDataMerge() {
-  counter = counter + 1 % ;
-  if (counter )
-}
 
