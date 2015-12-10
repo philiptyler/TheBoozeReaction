@@ -24,6 +24,8 @@
     "jquery": "^2.1.4",
     "mocha": "^2.3.4",
     "react": "^0.14.3",
+    "react-dom": "^0.14.3",
+    "reactify": "^1.1.1",
     "underscore": "^1.8.3"
   }
 }

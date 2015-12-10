@@ -13,7 +13,9 @@ SRC=$DIR/src
 mkdir -p build
 
 # compile javascript
-browserify $SRC/js/main.js > $DIR/build/script.js
+browserify $SRC/js/main.js \
+    -t reactify \
+    > $DIR/build/script.js
 
 # straight-up copy the html file
 cp $SRC/index.html $DIR/build/index.html 

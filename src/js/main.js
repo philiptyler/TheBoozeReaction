@@ -6,6 +6,9 @@ window.$ = require('jQuery'); // binding to window for Backbone :/
 var Router = require('./router');
 var store = require('./store');
 
+// bind views to dom elements
+var EstablishmentsView = require('./views/establishments.jsx');
+
 new Router().start();
 
 loadAllJSON();
