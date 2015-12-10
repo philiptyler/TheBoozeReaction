@@ -16,6 +16,8 @@
   },
   "homepage": "https://github.com/philiptyler/TheBoozeReaction#readme",
   "dependencies": {
-    "mocha": "^2.3.4"
+    "backbone": "^1.2.3",
+    "mocha": "^2.3.4",
+    "react": "^0.14.3"
   }
 }
