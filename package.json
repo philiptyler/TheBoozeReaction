@@ -1,0 +1,21 @@
+{
+  "name": "TheBoozeReaction",
+  "version": "0.0.0",
+  "description": "Web Application written in React.js + backbone.js to utilize boozefinder API",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/philiptyler/TheBoozeReaction.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/philiptyler/TheBoozeReaction/issues"
+  },
+  "homepage": "https://github.com/philiptyler/TheBoozeReaction#readme",
+  "dependencies": {
+    "mocha": "^2.3.4"
+  }
+}
