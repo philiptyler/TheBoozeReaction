@@ -21,7 +21,9 @@
 
    name: LIBATIONS_READY
    description: A big collection of delicious beverages is available
-   payload: An array of plain JS objects, each representing a libation
+   payload: An array of plain JS objects, each representing an establishment.
+            Each establishment object will have 'libations', an array of plain
+            objects, each representing a libation served at that establishment.
    implemented: dev
 
    name: ESTABLISHMENTS_READY
