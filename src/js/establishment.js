@@ -1,10 +1,11 @@
 var Backbone = require('backbone');
 
-var Libation  = Backbone.Model.extend({
+var Establishment  = Backbone.Model.extend({
 
   defaults: {
     name: '',
-    proof: '',
+    address: '',
+    coordinates: '',
     description: '',
     image: ''
   },
