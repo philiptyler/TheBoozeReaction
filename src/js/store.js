@@ -1,22 +1,51 @@
 var EstablishmentCol = require('./establishmentCol');
 var LibationCol = require('./libationCol');
+var Menu = require('./menu');
 
 var store = {};
 var loadCounter = 0;
 
 /* builds establishment Backbone collection from json from API */
 window.bus.on('ESTABLISHMENTS_READY', function (jsonPayload) {
-  store.establishments = new EstablishmentCol(jsonPayload);
+  store.establishmentJSON = jsonPayload;
 });
 
-/* builds establishment Backbone collection from json from API */
+/* builds libation Backbone collection from json from API */
 window.bus.on('LIBATIONS_READY', function (jsonPayload) {
-  store.libations = new LibationCol(jsonPayload);
+  store.libationJSON = jsonPayload;
+});
+
+/* builds libation Backbone collection from json from API */
+window.bus.on('ESTABLISHMENT_LIBATIONS_READY', function (jsonPayload) {
+  store.menuJSON = jsonPayload;
+});
+
+/* builds libation Backbone collection from json from API */
+window.bus.on('RATINGS_READY', function (jsonPayload) {
+  store.ratingJSON = jsonPayload;
 });
 
 window.bus.on('ALL_READY', function () {
-  console.log(store);
+  compileData();
 });
 
 module.exports = store;
+
+// PRIVATE FUNCTIONS
+function compileData() {
+  store.establishments = new EstablishmentCol(store.establishmentJSON);
+  store.libations = new LibationCol(store.libationJSON);
+
+  /* Bind Rating objects to their Libation-Establishment relationships */
+  var allMenu = new Menu(store.menuJSON);
+  for (var i = 0; i < store.ratingJSON.length; i++) {
+    allMenu.get(store.ratingJSON[i].establishment_libation).set('rating', store.ratingJSON[i].score);
+  }
+
+  /* Iterate through all Establishment-Libation relationships and add them to their appropriate
+      Establishment Models' Menu */
+  allMenu.forEach(function (element) {
+    store.establishments.get(element.get('establishment')).get('menu').add(element);
+  });
+}
 

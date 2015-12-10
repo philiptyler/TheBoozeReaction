@@ -10,8 +10,12 @@ var Establishment  = Backbone.Model.extend({
     coordinates: '',
     description: '',
     image: '',
-    menu: function () { return new Menu(); }
+    menu: null
   },
+
+  initialize: function () {
+    this.set('menu', new Menu());
+  }
 
 });
 
