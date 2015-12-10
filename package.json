@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "./build.sh",
+    "start": "./server.js",
     "test": "mocha"
   },
   "repository": {
