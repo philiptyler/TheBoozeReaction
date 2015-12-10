@@ -10,3 +10,5 @@ var Libation  = Backbone.Model.extend({
   },
 
 });
+
+module.exports = Libation;

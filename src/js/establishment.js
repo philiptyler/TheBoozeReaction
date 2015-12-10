@@ -11,3 +11,5 @@ var Establishment  = Backbone.Model.extend({
   },
 
 });
+
+module.exports = Establishment;
