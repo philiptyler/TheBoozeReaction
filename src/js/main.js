@@ -4,19 +4,19 @@
 window.bus = require('./bus');
 var $ = require('jQuery');
 
-$.get('http://qa2.theblacktux.com:8000/api/1/establishments', {}, function (response) {
+$.get('http://qa2.theblacktux.com:8000/api/1/establishments/', {}, function (response) {
   bus.trigger('ESTABLISHMENTS_READY', response.results);
 });
 
-$.get('http://qa2.theblacktux.com:8000/api/1/libations', {}, function (response) {
+$.get('http://qa2.theblacktux.com:8000/api/1/libations/', {}, function (response) {
   bus.trigger('LIBATIONS_READY', response.results);
 });
 
-$.get('http://qa2.theblacktux.com:8000/api/1/establishment_libations', {}, function (response) {
+$.get('http://qa2.theblacktux.com:8000/api/1/establishment_libations/', {}, function (response) {
   bus.trigger('ESTABLISHMENT_LIBATIONS_READY', response.results);
 });
 
-$.get('http://qa2.theblacktux.com:8000/api/1/ratings', {}, function (response) {
+$.get('http://qa2.theblacktux.com:8000/api/1/ratings/', {}, function (response) {
   bus.trigger('RATINGS_READY', response.results);
 });
 
