@@ -19,9 +19,11 @@
    Here is to define a catalog of events that are specific to our
    application. Here it is:
 
-   name: LIBATIONS_READY
-   description: A big collection of delicious beverages is available
-   payload: An array of plain JS objects, each representing a libation
+   name: ESTABLISHMENTS_READY 
+   description: A big collection of establishments is available
+   payload: An array of plain JS objects, each representing an establishment.
+            Each establishment object will have 'libations', an array of plain
+            objects, each representing a libation served at that establishment.
    implemented: not yet!
 
 */
