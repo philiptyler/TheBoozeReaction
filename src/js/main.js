@@ -32,7 +32,7 @@ function loadAllJSON () {
   });
 
   $.when(establishmentPromise, libationPromise, establishmentLibationPromise, ratingPromise).done(function () {
-    bus.trigger('ALL_READY');
+    bus.trigger('ALL_READY', establishmentPromise[0]);
   });
 }
 
