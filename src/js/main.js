@@ -2,7 +2,7 @@
 // We don't have to do this, but it aids understanding of what we're doing,
 // and makes it easier to experiment from the browser.
 window.bus = require('./bus');
-window.$ = require('jQuery'); // binding to window for Backbone :/
+window.$ = require('jquery'); // binding to window for Backbone :/
 var store = require('./store');
 
 // attach all our top-level views:
@@ -35,9 +35,6 @@ function loadAllJSON () {
     bus.trigger('ALL_READY', establishmentPromise[0]);
   });
 }
-
-
-
 
 
 
