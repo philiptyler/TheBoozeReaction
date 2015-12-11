@@ -39,7 +39,10 @@ function compileData() {
   /* Bind Rating objects to their Libation-Establishment relationships */
   var allMenu = new Menu(store.menuJSON);
   for (var i = 0; i < store.ratingJSON.length; i++) {
-    allMenu.get(store.ratingJSON[i].establishment_libation).set('rating', store.ratingJSON[i].score);
+    var menuItem = allMenu.get(store.ratingJSON[i].establishment_libation)
+    if (menuItem) {
+      menuItem.set('rating', store.ratingJSON[i].score);
+    }
   }
 
   /* Iterate through all Establishment-Libation relationships and add them to their appropriate
