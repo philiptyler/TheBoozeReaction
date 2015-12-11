@@ -16,7 +16,7 @@ module.exports = React.createClass({
         var establishmentNodes = this.state.data.map(function(est){
             return (
                 <li key={ est.id }>
-                    <h3>{ est.name }</h3>
+                    <h3><a href={'establishments/' + est.id}>{ est.name }</a></h3>
                     <p>{ est.description }</p>
                 </li>
             );
