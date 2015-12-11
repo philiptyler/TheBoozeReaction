@@ -53,5 +53,7 @@ function compileData() {
       establishment.get('menu').add(element);
     }
   });
+
+  window.bus.trigger('JSON_READY', store.establishments.toJSON());
 }
 

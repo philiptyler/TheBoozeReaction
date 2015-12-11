@@ -7,18 +7,14 @@ module.exports = React.createClass({
         return { data: [] };
     },
     componentDidMount: function(){
-        window.bus.on('ESTABLISHMENTS_READY', function(data){
+        window.bus.on('JSON_READY', function(data){
             this.setState({ data: data });
-            this.render();
         }, this);
     },
     render: function(){
         var establishmentNodes = this.state.data.map(function(est){
             return (
-                <li key={ est.id }>
-                    <h3>{ est.name }</h3>
-                    <p>{ est.description }</p>
-                </li>
+                <EstablishmentView key={ est.id } name={ est.name } description={ est.description } menu={ est.menu.toJSON() }/>
             );
         });
 
