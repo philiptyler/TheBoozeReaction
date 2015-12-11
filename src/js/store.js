@@ -48,6 +48,11 @@ function compileData() {
   /* Iterate through all Establishment-Libation relationships and add them to their appropriate
       Establishment Models' Menu */
   allMenu.forEach(function (element) {
+    var libation = store.libations.get(element.get('libation'));
+    if (libation) {
+      element.set('libation', libation.toJSON());
+    }
+
     var establishment = store.establishments.get(element.get('establishment'))
     if (establishment) {
       establishment.get('menu').add(element);

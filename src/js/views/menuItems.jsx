@@ -3,15 +3,12 @@ var ReactDOM = require('react-dom');
 var MenuItem = require('./menuItem.jsx');
 
 module.exports = React.createClass({
-    getInitialState: function(){
-        return { data: [] };
-    },
     render: function(){
-        var menuItemNodes = this.state.data.map(function(lib){
-            console.log('lib', lib);
+        var menuItemNodes = this.props.data.map(function(item) {
             return (
-                <MenuItem key={ lib.id } name={ lib.name }
-                proof={ lib.proof }description={ lib.description }/>
+                <MenuItem key={ item.id } price={ item.price } name={ item.libation.name }
+                description={ item.libation.description } proof={ item.libation.proof }
+                rating={ item.rating }/>
             );
         });
 

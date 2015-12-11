@@ -7,7 +7,7 @@ var MenuItem  = Backbone.Model.extend({
     price: 0.0,
     volume: 0,
     id: '',
-    rating: -1
+    rating: 'N/A'
   },
 
 });

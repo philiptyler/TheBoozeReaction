@@ -7,7 +7,8 @@ module.exports = React.createClass({
         return (<li>
             <h4><a href={'establishments/' + this.props.id}>{this.props.name}</a></h4>
             <p>{this.props.description}</p>
-            <div>MENU: <MenuItems data={ this.props.menu } /></div>
+            <div>
+            MENU: <MenuItems data={ this.props.menu.toJSON() } /></div>
             </li>
         );
     }
