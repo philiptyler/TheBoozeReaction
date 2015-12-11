@@ -21,9 +21,10 @@ module.exports = React.createClass({
                 </li>
             );
         });
+
+        // <Establishment name=???/> below?
         return (
             <ul>
-            // <Establishment name=???/>
             { establishmentNodes }
             </ul>
         );
