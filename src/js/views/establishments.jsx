@@ -14,7 +14,7 @@ module.exports = React.createClass({
     render: function(){
         var establishmentNodes = this.state.data.map(function(est){
             return (
-                <EstablishmentView key={ est.id } id={ est.id } name={ est.name } description={ est.description } menu={ est.menu }/>
+                <EstablishmentView key={ est.id } id={ est.id } name={ est.name } description={ est.description } menu={ est.menu.toJSON() }/>
             );
         });
 

@@ -19,7 +19,7 @@ var Router = Backbone.Router.extend({
         'establishments/:id/edit': 'editEstablishment',
         'establishments/:id':      'showEstablishment',
     },
-    
+
     showEstablishments: function(){
         console.log('showing all establishments');
         $('.page').hide();
@@ -30,6 +30,7 @@ var Router = Backbone.Router.extend({
         console.log('showing establishment '+establishmentId);
         $('.page').hide();
         $('#establishment').show();
+        window.bus.trigger('LOAD_ESTABLISHMENT', establishmentId);
         // request that the specific model is loaded, TBD
     },
 

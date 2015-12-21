@@ -26,39 +26,45 @@ window.bus.on('RATINGS_READY', function (jsonPayload) {
 });
 
 window.bus.on('ALL_READY', function () {
-  compileData();
+  store.compileData();
+});
+
+window.bus.on('LOAD_ESTABLISHMENT', function (establishmentId) {
+  console.log('store', store);
+  window.bus.trigger('SHOW_ESTABLISHMENT', store.establishments.get(establishmentId));
 });
 
 module.exports = store;
 
 // PRIVATE FUNCTIONS
-function compileData() {
-  store.establishments = new EstablishmentCol(store.establishmentJSON);
-  store.libations = new LibationCol(store.libationJSON);
+store.compileData = function () {
+  this.establishments = new EstablishmentCol(this.establishmentJSON);
+  this.libations = new LibationCol(this.libationJSON);
 
   /* Bind Rating objects to their Libation-Establishment relationships */
-  var allMenu = new Menu(store.menuJSON);
-  for (var i = 0; i < store.ratingJSON.length; i++) {
-    var menuItem = allMenu.get(store.ratingJSON[i].establishment_libation)
+  var allMenu = new Menu(this.menuJSON);
+  for (var i = 0; i < this.ratingJSON.length; i++) {
+    var menuItem = allMenu.get(this.ratingJSON[i].establishment_libation)
     if (menuItem) {
-      menuItem.set('rating', store.ratingJSON[i].score);
+      menuItem.set('rating', this.ratingJSON[i].score);
     }
   }
 
   /* Iterate through all Establishment-Libation relationships and add them to their appropriate
       Establishment Models' Menu */
+  var that = this;
   allMenu.forEach(function (element) {
-    var libation = store.libations.get(element.get('libation'));
+    var libation = that.libations.get(element.get('libation'));
     if (libation) {
       element.set('libation', libation.toJSON());
     }
 
-    var establishment = store.establishments.get(element.get('establishment'))
+    var establishment = that.establishments.get(element.get('establishment'))
     if (establishment) {
       establishment.get('menu').add(element);
     }
   });
 
-  window.bus.trigger('JSON_READY', store.establishments.toJSON());
+  window.bus.trigger('JSON_READY', this.establishments.toJSON());
 }
 

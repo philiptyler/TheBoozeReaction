@@ -1,8 +1,5 @@
 .page {
     // display: none; // hide until told otherwise
-    width: 100px;
-    height: 100px;
-    background: lightGray;
 }
 #establishments {
     display: block; // this is our 'main' page, so show it

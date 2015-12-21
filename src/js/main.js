@@ -32,6 +32,6 @@ function loadAllJSON () {
   });
 
   $.when(establishmentPromise, libationPromise, establishmentLibationPromise, ratingPromise).done(function () {
-    window.bus.trigger('ALL_READY', establishmentPromise[0]);
+    window.bus.trigger('ALL_READY');
   });
 }
